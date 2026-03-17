@@ -1,0 +1,100 @@
+﻿unit Unit1;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls;
+
+type
+  TForm1 = class(TForm)
+    Button1: TButton;
+    procedure Button1Click(Sender: TObject);
+    procedure FormShow(Sender: TObject);
+  private
+
+    procedure FadeIn(AFrames: Integer);
+    procedure FadeOut(AFrames: Integer);
+  protected
+    procedure CreateWnd; override;
+  public
+    { Public declarations }
+  end;
+
+var
+  Form1: TForm1;
+
+implementation
+
+{$R *.dfm}
+
+uses
+  System.Threading;
+
+{$REGION 'TForm1'}
+procedure TForm1.Button1Click(Sender: TObject);
+begin
+  Button1.Enabled := False;
+  TThreadPool.Default.QueueWorkItem(procedure
+  begin
+    for var i := 0 to 4 do
+    begin
+      FadeOut(60);
+      FadeIn(60);
+    end;
+    TThread.Queue(nil, procedure
+    begin
+      Button1.Enabled := True;
+    end);
+  end);
+end;
+
+procedure TForm1.FormShow(Sender: TObject);
+begin
+  Button1.Enabled := False;
+  TThreadPool.Default.QueueWorkItem(procedure
+  begin
+    FadeIn(100);
+
+    TThread.Queue(nil, procedure
+    begin
+      Button1.Enabled := True;
+    end);
+  end);
+end;
+
+procedure TForm1.FadeIn(AFrames: Integer);
+begin
+  var LFrames: Integer := AFrames;
+  for var i := 1 to LFrames do
+  begin
+    if HandleAllocated then
+    begin
+      SetLayeredWindowAttributes(Handle, $0000FF00, Trunc((i / AFrames) * 255), LWA_ALPHA or LWA_COLORKEY);
+      Sleep(10);
+    end;
+  end;
+end;
+
+procedure TForm1.FadeOut(AFrames: Integer);
+begin
+  var LFrames: Integer := AFrames;
+  for var i := LFrames downto 0 do
+  begin
+    if HandleAllocated then
+    begin
+      SetLayeredWindowAttributes(Handle, $0000FF00, Trunc((i / AFrames) * 255), LWA_ALPHA or LWA_COLORKEY);
+      Sleep(10);
+    end;
+  end;
+end;
+
+procedure TForm1.CreateWnd;
+begin
+  inherited;
+  SetWindowLong(Handle, GWL_EXSTYLE, GetWindowLong(Handle, GWL_EXSTYLE) or WS_EX_LAYERED);
+  SetLayeredWindowAttributes(Handle, $0000FF00, 0, LWA_COLORKEY or LWA_ALPHA);
+end;
+{$ENDREGION}
+
+end.

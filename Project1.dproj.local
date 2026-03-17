@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2024/03/13 15:38:24.000.897,=C:\Users\WiniciusPousada\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2024/03/13 15:57:35.000.433,=C:\Users\WiniciusPousada\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2024/03/13 15:58:13.000.705,=C:\Users\WiniciusPousada\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2024/12/09 17:56:18.000.330,=C:\Users\WiniciusPousada\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2026/03/17 15:42:07.884,=C:\Users\WiniciusPousada\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2026/03/17 15:43:35.784,C:\Users\WiniciusPousada\Documents\Embarcadero\Studio\Projects\LayeredWindow\Unit1.pas=C:\Users\WiniciusPousada\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2026/03/17 15:43:35.784,C:\Users\WiniciusPousada\Documents\Embarcadero\Studio\Projects\LayeredWindow\Unit1.dfm=C:\Users\WiniciusPousada\Documents\Embarcadero\Studio\Projects\Unit1.dfm</Transaction>
+    <Transaction>2026/03/17 15:43:39.176,C:\Users\WiniciusPousada\Documents\Embarcadero\Studio\Projects\LayeredWindow\Project1.dproj=C:\Users\WiniciusPousada\Documents\Embarcadero\Studio\Projects\Project1.dproj</Transaction>
+  </Transactions>
+</BorlandProject>
