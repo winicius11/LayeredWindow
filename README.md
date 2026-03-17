@@ -1,0 +1,1 @@
+<img src="./assets/record1.gif" alt="GIF" width="50%" height="50%">
